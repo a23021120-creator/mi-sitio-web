@@ -7,16 +7,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #120919;
-            --bg-secondary: #1d1026;
-            --bg-card: #261633;
-            --purple-main: #800020; /* Tono Guinda/Burgundy */
-            --purple-accent: #6B0D25;
-            --purple-light: #9b2c47;
-            --gold-accent: #b38e5d; /* Accent tierra/dorado */
-            --text-main: #f3f0f5;
-            --text-muted: #a395b0;
-            --code-bg: #0c0512;
+            /* Paleta sobria y elegante (Dark Purple / Burgundy / Earth Accent) */
+            --bg-primary: #0f0a14;
+            --bg-secondary: #17101f;
+            --bg-card: #1f1629;
+            --purple-main: #581c37;      /* Guinda sobrio */
+            --purple-accent: #722648;    /* Púrpura/Guinda elegante */
+            --earth-accent: #8c7355;     /* Tono tierra/arena sutil */
+            --text-main: #e6e1eb;
+            --text-muted: #9a8e9e;
+            --code-bg: #09050d;
             --sidebar-width: 280px;
         }
 
@@ -38,7 +38,7 @@
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--bg-secondary);
-            border-right: 1px solid rgba(179, 142, 93, 0.2);
+            border-right: 1px solid rgba(140, 115, 85, 0.2);
             position: fixed;
             height: 100vh;
             overflow-y: auto;
@@ -46,7 +46,7 @@
         }
 
         .sidebar h2 {
-            color: var(--gold-accent);
+            color: var(--earth-accent);
             font-size: 1.2rem;
             margin-bottom: 20px;
             display: flex;
@@ -74,7 +74,7 @@
         .sidebar a:hover, .sidebar a.active {
             background-color: var(--purple-main);
             color: #ffffff;
-            border-left: 4px solid var(--gold-accent);
+            border-left: 4px solid var(--earth-accent);
         }
 
         /* CONTENIDO PRINCIPAL */
@@ -109,7 +109,7 @@
 
         .section h2 {
             font-size: 1.8rem;
-            color: var(--gold-accent);
+            color: var(--earth-accent);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -126,7 +126,7 @@
 
         .card {
             background-color: var(--bg-card);
-            border: 1px solid rgba(179, 142, 93, 0.15);
+            border: 1px solid rgba(140, 115, 85, 0.15);
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -146,39 +146,34 @@
             line-height: 1.5;
         }
 
-        .card ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
         /* ESTRUCTURA DE CARPETAS */
         .tree-view {
             background-color: var(--code-bg);
             border-radius: 8px;
             padding: 20px;
             font-family: 'Courier New', Courier, monospace;
-            border: 1px solid rgba(128, 0, 32, 0.4);
+            border: 1px solid rgba(88, 28, 55, 0.4);
             color: #dcdcdc;
             line-height: 1.6;
         }
 
-        .tree-view .folder { color: var(--gold-accent); font-weight: bold; }
+        .tree-view .folder { color: var(--earth-accent); font-weight: bold; }
         .tree-view .file { color: var(--text-main); }
         .tree-view .comment { color: #6a9955; font-style: italic; }
 
-        /* PESTAÑAS DE CÓDIGO (COMPARATOR) */
+        /* PESTAÑAS DE CÓDIGO */
         .tab-container {
             background-color: var(--bg-card);
             border-radius: 8px;
             overflow: hidden;
-            border: 1px solid rgba(179, 142, 93, 0.2);
+            border: 1px solid rgba(140, 115, 85, 0.2);
             margin-top: 20px;
         }
 
         .tab-buttons {
             display: flex;
             background-color: var(--bg-secondary);
-            border-bottom: 1px solid rgba(179, 142, 93, 0.2);
+            border-bottom: 1px solid rgba(140, 115, 85, 0.2);
         }
 
         .tab-btn {
@@ -195,7 +190,7 @@
         .tab-btn.active {
             color: #fff;
             background-color: var(--purple-main);
-            border-bottom: 3px solid var(--gold-accent);
+            border-bottom: 3px solid var(--earth-accent);
         }
 
         .tab-content {
@@ -212,13 +207,14 @@
             background-color: var(--code-bg);
             padding: 20px;
             overflow-x: auto;
-            font-family: 'Consolas', 'Fira Code', monospace;
-            font-size: 0.9rem;
-            color: #e6e6e6;
+            max-height: 650px;
+            font-family: 'Consolas', 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #d4d4d4;
             line-height: 1.5;
         }
 
-        /* CONSOLA DE ERRORES / REGLAS SEMÁNTICAS */
+        /* REGLAS Y DIAGNÓSTICOS */
         .badge {
             display: inline-block;
             padding: 4px 8px;
@@ -228,9 +224,9 @@
             margin-right: 5px;
         }
 
-        .badge-lex { background-color: #d97706; color: #fff; }
-        .badge-syn { background-color: #2563eb; color: #fff; }
-        .badge-sem { background-color: #dc2626; color: #fff; }
+        .badge-lex { background-color: #6b522a; color: #fff; }
+        .badge-syn { background-color: #2e4362; color: #fff; }
+        .badge-sem { background-color: var(--purple-accent); color: #fff; }
 
         .rule-list {
             list-style: none;
@@ -294,15 +290,15 @@
             <h2><i class="fa-solid fa-layer-group"></i> 2. Tecnologías y Herramientas</h2>
             <div class="grid-cards">
                 <div class="card">
-                    <h3><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript (Node.js/Web)</h3>
+                    <h3><i class="fa-brands fa-js" style="color: var(--earth-accent);"></i> JavaScript (Node.js/Web)</h3>
                     <p>Utilizado en la etapa inicial de prototipado rápido para integrar el compilador directamente con la interfaz gráfica web del IDE.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fa-solid fa-code" style="color: #00599c;"></i> C++ (C++11 / C++17)</h3>
+                    <h3><i class="fa-solid fa-code" style="color: var(--text-muted);"></i> C++ (C++11 / C++17)</h3>
                     <p>Lenguaje de producción definitivo para garantizar ejecución de alta velocidad, administración precisa de memoria y portabilidad a sistemas embebidos.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fa-solid fa-microchip" style="color: var(--gold-accent);"></i> Hardware y Simulación</h3>
+                    <h3><i class="fa-solid fa-microchip" style="color: var(--earth-accent);"></i> Hardware y Simulación</h3>
                     <p>Integración conceptual con microcontroladores ESP32, simulador Wokwi y servomotores con rangos físicos delimitados (0° a 180°).</p>
                 </div>
             </div>
@@ -318,7 +314,7 @@
                 </div>
                 <div class="card">
                     <h3>2. Parser (Sintáctico)</h3>
-                    <p>Verifica la estructura Gramatical, balance de corchetes <code>[...]</code>, paréntesis <code>(...)</code> y sintaxis de condicionales (<code>si</code>, <code>sino</code>, <code>repetir</code>).</p>
+                    <p>Verifica la estructura gramatical, balance de corchetes <code>[...]</code>, paréntesis <code>(...)</code> y sintaxis de condicionales (<code>si</code>, <code>sino</code>, <code>repetir</code>).</p>
                 </div>
                 <div class="card">
                     <h3>3. Semántico</h3>
@@ -336,15 +332,12 @@
                 │   └── <span class="file">index.html</span><br>
                 ├── <span class="folder">src/</span><br>
                 │   ├── <span class="folder">js/</span> <span class="comment"># Prototipo Frontend / Motor JS Original</span><br>
-                │   │   ├── <span class="file">lexer.js</span><br>
                 │   │   └── <span class="file">compiler.js</span><br>
                 │   └── <span class="folder">cpp/</span> <span class="comment"># Motor del Compilador Final Nativo</span><br>
                 │       └── <span class="file">main.cpp</span><br>
                 ├── <span class="folder">examples/</span> <span class="comment"># Casos de prueba de validación</span><br>
                 │   ├── <span class="file">01_sintaxis_correcta.robot</span><br>
-                │   ├── <span class="file">02_errores_lexicos.robot</span><br>
-                │   ├── <span class="file">03_errores_sintacticos.robot</span><br>
-                │   └── <span class="file">04_errores_semanticos.robot</span><br>
+                │   └── <span class="file">02_errores.robot</span><br>
                 └── <span class="file">README.md</span>
             </div>
         </section>
@@ -363,11 +356,11 @@
                 </div>
                 <div class="rule-item">
                     <h4><span class="badge badge-sem">SEMÁNTICO</span> Rango Físico de Servomotores (0° a 180°)</h4>
-                    <p style="color: var(--text-muted);">Evalúa los argumentos pasados a funciones como <code>moverBase()</code> o <code>moverGarra()</code>. Si el valor absoluto es negativo (ej. <code>-45</code>) o supera 180 (ej. <code>270</code>), emite una alerta semántica.</p>
+                    <p style="color: var(--text-muted);">Evalúa los argumentos pasados a funciones como <code>moverBase()</code> o <code>moverGarra()</code>. Si el valor es negativo o supera 180, emite una alerta semántica.</p>
                 </div>
                 <div class="rule-item">
                     <h4><span class="badge badge-sem">SEMÁNTICO</span> Incompatibilidad de Tipos y Firmas</h4>
-                    <p style="color: var(--text-muted);">Impide asignaciones entre <code>VARNUM</code> y <code>VARTEXTO</code>, previene operaciones incoherentes (sumar número con cadena) y verifica la firma completa de <code>escribir(x, y, tam, msg)</code>.</p>
+                    <p style="color: var(--text-muted);">Impide asignaciones entre <code>VARNUM</code> y <code>VARTEXTO</code>, previene operaciones incoherentes y verifica las firmas de funciones.</p>
                 </div>
             </div>
         </section>
@@ -375,7 +368,7 @@
         <!-- 6. CÓDIGO COMPARATIVO -->
         <section id="code-comparison" class="section">
             <h2><i class="fa-solid fa-code"></i> 6. Implementación de Código Fuente</h2>
-            <p style="color: var(--text-muted); margin-bottom: 15px;">Selecciona la pestaña para revisar la versión original en JavaScript o la versión final en C++:</p>
+            <p style="color: var(--text-muted); margin-bottom: 15px;">Selecciona la pestaña para revisar la versión final completa en C++ o la versión del prototipo original en JavaScript:</p>
             
             <div class="tab-container">
                 <div class="tab-buttons">
@@ -383,17 +376,18 @@
                     <button class="tab-btn" onclick="switchTab('js')">JavaScript (Prototipo Original)</button>
                 </div>
 
-                <!-- CÓDIGO C++ -->
+                <!-- CÓDIGO C++ FINAL COMPLETO -->
                 <div id="cpp" class="tab-content active">
-                    <pre><code>// ==========================================
-// COMPILADOR COMPLETO EN C++ (FINAL)
-// ==========================================
-#include &lt;iostream&gt;
+                    <pre><code>#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;vector&gt;
 #include &lt;unordered_map&gt;
 #include &lt;unordered_set&gt;
 #include &lt;cctype&gt;
+
+// ==========================================
+// 1. ESTRUCTURAS DE DATOS
+// ==========================================
 
 struct Token {
     std::string type;
@@ -409,11 +403,14 @@ struct Token {
 struct DiagnosticError {
     int line;
     int column;
-    std::string category; 
+    std::string category; // LEXICO, SINTACTICO, SEMANTICO
     std::string message;
 };
 
-// --- ANALIZADOR LÉXICO (LEXER) ---
+// ==========================================
+// 2. ANALIZADOR LÉXICO (LEXER)
+// ==========================================
+
 class Lexer {
 private:
     std::string source;
@@ -422,90 +419,1052 @@ private:
     int column;
     std::vector&lt;DiagnosticError&gt;&amp; errors;
 
+    const std::unordered_set&lt;std::string&gt; keywords = {
+        "INICIO", "BUCLE", "VARNUM", "VARTEXTO", "BOOLEANOS", "si", "sino", "repetir"
+    };
+
+    const std::unordered_set&lt;std::string&gt; robotFunctions = {
+        "moverBase", "moverHombro", "moverCodo", "moverMuneca", "moverGarra",
+        "Limpiar", "escribir", "LED", "sonar", "esperar", "Adelante", "Atras", 
+        "Detener", "velocidadBanda", "LeerSensor"
+    };
+
 public:
     Lexer(const std::string&amp; src, std::vector&lt;DiagnosticError&gt;&amp; errs)
         : source(src), cursor(0), line(1), column(1), errors(errs) {}
 
     std::vector&lt;Token&gt; tokenize() {
         std::vector&lt;Token&gt; tokens;
+
         while (cursor &lt; source.length()) {
             char current = source[cursor];
 
-            if (std::isspace((unsigned char)current)) {
-                if (current == '\n') { line++; column = 1; }
-                else { column++; }
+            if (current == ' ' || current == '\t' || current == '\r') {
+                advance();
+                continue;
+            }
+
+            if (current == '\n') {
+                line++;
+                column = 1;
                 cursor++;
                 continue;
             }
 
+            // Comentarios con @
             if (current == '@') {
-                while (cursor &lt; source.length() && source[cursor] != '\n') advance();
+                while (cursor &lt; source.length() &amp;&amp; source[cursor] != '\n') {
+                    advance();
+                }
                 continue;
             }
 
-            // Identificadores, números y soporte UTF-8...
+            // Cadenas de texto
+            if (current == '"') {
+                int startCol = column;
+                advance();
+                std::string text = "";
+                while (cursor &lt; source.length() &amp;&amp; source[cursor] != '"' &amp;&amp; source[cursor] != '\n') {
+                    text += source[cursor];
+                    advance();
+                }
+                if (cursor &lt; source.length() &amp;&amp; source[cursor] == '"') {
+                    advance();
+                    tokens.push_back(Token("LITERAL_TEXTO", text, line, startCol));
+                } else {
+                    errors.push_back({line, startCol, "LEXICO", "Cadena de texto sin cerrar con comillas."});
+                }
+                continue;
+            }
+
+            // Números (Positivos y Negativos)
+            if (std::isdigit(current) || (current == '-' &amp;&amp; cursor + 1 &lt; source.length() &amp;&amp; std::isdigit(source[cursor + 1]))) {
+                int startCol = column;
+                std::string numStr = "";
+                if (current == '-') {
+                    numStr += current;
+                    advance();
+                }
+                while (cursor &lt; source.length() &amp;&amp; (std::isdigit(source[cursor]) || source[cursor] == '.')) {
+                    numStr += source[cursor];
+                    advance();
+                }
+                tokens.push_back(Token("NUMERO", numStr, line, startCol, std::stod(numStr)));
+                continue;
+            }
+
+            // Identificadores, Palabras Reservadas y Funciones (Soporte UTF-8 / Acentos)
+            if (std::isalpha((unsigned char)current) || current == '_') {
+                int startCol = column;
+                std::string id = "";
+                bool tieneCaracterInvalido = false;
+
+                while (cursor &lt; source.length()) {
+                    unsigned char ch = source[cursor];
+                    
+                    if (std::isspace(ch) || ch == '(' || ch == ')' || ch == '[' || 
+                        ch == ']' || ch == ',' || ch == '=' || ch == ';' || ch == '$' || ch == '#') {
+                        break;
+                    }
+
+                    if (ch &gt; 127) {
+                        if (!tieneCaracterInvalido) {
+                            errors.push_back({line, column, "LEXICO", "Caracter no permitido en el alfabeto (acento/especial)"});
+                            tieneCaracterInvalido = true;
+                        }
+                        advance();
+                        continue;
+                    }
+
+                    id += (char)ch;
+                    advance();
+                }
+
+                if (!tieneCaracterInvalido &amp;&amp; !id.empty()) {
+                    if (keywords.find(id) != keywords.end()) {
+                        tokens.push_back(Token("PALABRA_RESERVADA", id, line, startCol));
+                    } else if (robotFunctions.find(id) != robotFunctions.end()) {
+                        tokens.push_back(Token("FUNCION", id, line, startCol));
+                    } else {
+                        tokens.push_back(Token("ID", id, line, startCol));
+                    }
+                }
+                continue;
+            }
+
+            // Delimitadores y Operadores
+            if (current == '[' || current == ']' || current == '(' || current == ')' || current == ',') {
+                tokens.push_back(Token("DELIMITADOR", std::string(1, current), line, column));
+                advance();
+                continue;
+            }
+
+            if (current == '=' || current == '&lt;' || current == '&gt;' || current == '+' || current == '-') {
+                int startCol = column;
+                std::string op(1, current);
+                advance();
+                if (cursor &lt; source.length() &amp;&amp; source[cursor] == '=') {
+                    op += '=';
+                    advance();
+                }
+                tokens.push_back(Token("OPERADOR", op, line, startCol));
+                continue;
+            }
+
+            errors.push_back({line, column, "LEXICO", std::string("Simbolo no perteneciente al alfabeto: '") + current + "'"});
             advance();
         }
+
         return tokens;
     }
 
 private:
-    void advance() { cursor++; column++; }
-};</code></pre>
+    void advance() {
+        cursor++;
+        column++;
+    }
+};
+
+// ==========================================
+// 3. ANALIZADOR SINTÁCTICO Y SEMÁNTICO
+// ==========================================
+
+class Compiler {
+private:
+    std::vector&lt;Token&gt; tokens;
+    size_t cursor;
+    std::vector&lt;DiagnosticError&gt;&amp; errors;
+    std::unordered_map&lt;std::string, std::string&gt; symbolTable;
+
+    const std::unordered_set&lt;std::string&gt; validFunctions = {
+        "moverBase", "moverHombro", "moverCodo", "moverMuneca", "moverGarra",
+        "Limpiar", "escribir", "LED", "sonar", "esperar", "Adelante", "Atras", 
+        "Detener", "velocidadBanda", "LeerSensor"
+    };
+
+public:
+    Compiler(const std::vector&lt;Token&gt;&amp; t, std::vector&lt;DiagnosticError&gt;&amp; errs)
+        : tokens(t), cursor(0), errors(errs) {}
+
+    bool analyze() {
+        checkBalancing();
+
+        while (cursor &lt; tokens.size()) {
+            Token tok = peek();
+
+            // Delimitadores de bloque o keywords de bloque
+            if (tok.value == "[" || tok.value == "]" || tok.value == "INICIO" || tok.value == "BUCLE") {
+                advance();
+                continue;
+            }
+
+            // Declaración de Variables
+            if (tok.type == "PALABRA_RESERVADA" &amp;&amp; (tok.value == "VARNUM" || tok.value == "VARTEXTO" || tok.value == "BOOLEANOS")) {
+                parseDeclaration();
+                continue;
+            }
+
+            // Llamadas a Funciones
+            if (tok.type == "FUNCION") {
+                parseFunctionCall();
+                continue;
+            }
+
+            // Asignación o Uso de Variables / Llamadas a funciones no declaradas
+            if (tok.type == "ID") {
+                if (cursor + 1 &lt; tokens.size() &amp;&amp; tokens[cursor + 1].value == "(") {
+                    // Función inexistente en la especificación del lenguaje
+                    errors.push_back({tok.line, tok.column, "SEMANTICO", "Uso de funcion no definida en el lenguaje: '" + tok.value + "()'"});
+                    advance(); // Consumir ID
+                    parseFunctionCall();
+                } else {
+                    parseAssignmentOrUsage();
+                }
+                continue;
+            }
+
+            // Estructuras de Control 'si'
+            if (tok.type == "PALABRA_RESERVADA" &amp;&amp; tok.value == "si") {
+                advance(); // Consumir 'si'
+                if (peek().value != "(") {
+                    errors.push_back({tok.line, tok.column, "SINTACTICO", "Falta de parentesis '(' en la condicion del 'si'"});
+                } else {
+                    advance(); // Consumir '('
+                    
+                    // Verificar procedimiento sin retorno dentro de la condición
+                    if (peek().type == "FUNCION" &amp;&amp; peek().value == "sonar") {
+                        errors.push_back({peek().line, peek().column, "SEMANTICO", "Uso de procedimiento sin retorno 'sonar()' dentro de una condicion relacional"});
+                    }
+
+                    parseExpression();
+                    if (peek().value == ")") advance();
+                }
+                continue;
+            }
+
+            // Estructura 'sino'
+            if (tok.type == "PALABRA_RESERVADA" &amp;&amp; tok.value == "sino") {
+                advance(); // Consumir 'sino'
+                if (peek().value != "[") {
+                    errors.push_back({tok.line, tok.column, "SINTACTICO", "Estructura incorrecta en 'sino': Se esperaba '[' para abrir el bloque"});
+                }
+                continue;
+            }
+
+            // Estructura 'repetir'
+            if (tok.type == "PALABRA_RESERVADA" &amp;&amp; tok.value == "repetir") {
+                advance(); // Consumir 'repetir'
+                if (peek().value != "(") {
+                    errors.push_back({tok.line, tok.column, "SINTACTICO", "Inversion de delimitadores o falta de '(' en la instruccion 'repetir'"});
+                } else {
+                    advance();
+                    parseExpression();
+                    if (peek().value == ")") advance();
+                }
+                continue;
+            }
+
+            advance();
+        }
+
+        return errors.empty();
+    }
+
+private:
+    Token peek() {
+        if (cursor &lt; tokens.size()) return tokens[cursor];
+        return Token("EOF", "", -1, -1);
+    }
+
+    Token advance() {
+        Token t = peek();
+        if (cursor &lt; tokens.size()) cursor++;
+        return t;
+    }
+
+    void parseDeclaration() {
+        Token typeTok = advance(); // Consumir VARNUM / VARTEXTO / BOOLEANOS
+        Token idTok = peek();
+
+        if (idTok.type == "ID") {
+            advance(); // Consumir nombre de la variable
+            symbolTable[idTok.value] = typeTok.value; // Registrar en tabla de símbolos
+
+            if (peek().value == "=") {
+                advance(); // Consumir '='
+                std::string exprType = parseExpression();
+                if (exprType != "DESCONOCIDO" &amp;&amp; typeTok.value == "VARNUM" &amp;&amp; exprType == "VARTEXTO") {
+                    errors.push_back({idTok.line, idTok.column, "SEMANTICO", "Incompatibilidad de tipos: No se puede asignar VARTEXTO a " + typeTok.value + " '" + idTok.value + "'"});
+                }
+            }
+        } else {
+            errors.push_back({typeTok.line, typeTok.column, "SINTACTICO", "Se esperaba un identificador despues de " + typeTok.value});
+        }
+    }
+
+    void parseAssignmentOrUsage() {
+        Token idTok = advance(); // Consumir el ID
+
+        if (symbolTable.find(idTok.value) == symbolTable.end()) {
+            errors.push_back({idTok.line, idTok.column, "SEMANTICO", "Variable no declarada: '" + idTok.value + "'"});
+        }
+
+        if (peek().value == "=") {
+            advance(); // Consumir '='
+            std::string varType = symbolTable[idTok.value];
+            std::string exprType = parseExpression();
+
+            if (varType == "VARNUM" &amp;&amp; exprType == "VARTEXTO") {
+                errors.push_back({idTok.line, idTok.column, "SEMANTICO", "Incompatibilidad de tipos: Intentando asignar VARTEXTO a la variable VARNUM '" + idTok.value + "'"});
+            }
+        }
+    }
+
+    void parseFunctionCall() {
+        Token funcTok = advance(); // Consumir la función
+
+        if (peek().value == "(") {
+            advance(); // Consumir '('
+            std::vector&lt;Token&gt; args;
+
+            while (cursor &lt; tokens.size() &amp;&amp; peek().value != ")" &amp;&amp; peek().value != "]") {
+                Token t = peek();
+
+                if (t.type == "ID") {
+                    if (symbolTable.find(t.value) == symbolTable.end()) {
+                        errors.push_back({t.line, t.column, "SEMANTICO", "Variable no declarada: '" + t.value + "'"});
+                    } else {
+                        // Pasar tipo guardado en tabla
+                        t.type = symbolTable[t.value];
+                    }
+                    args.push_back(t);
+                    advance();
+                } else if (t.type == "FUNCION") {
+                    parseFunctionCall();
+                } else if (t.type == "NUMERO" || t.type == "LITERAL_TEXTO") {
+                    args.push_back(t);
+                    advance();
+                } else {
+                    advance();
+                }
+
+                if (peek().value == ",") {
+                    advance(); // Consumir coma
+                }
+            }
+
+            if (peek().value == ")") {
+                advance(); // Consumir ')'
+            }
+
+            // 1. Validar límites de ángulos en servomotores (0 a 180)
+            if (funcTok.value == "moverBase" || funcTok.value == "moverHombro" || 
+                funcTok.value == "moverCodo" || funcTok.value == "moverMuneca" || funcTok.value == "moverGarra") {
+                if (!args.empty() &amp;&amp; args[0].type == "NUMERO") {
+                    if (args[0].numValue &lt; 0 || args[0].numValue &gt; 180) {
+                        errors.push_back({funcTok.line, funcTok.column, "SEMANTICO", 
+                            "Angulo fuera de rango (0 a 180) en " + funcTok.value + ": " + std::to_string((int)args[0].numValue)});
+                    }
+                }
+            }
+
+            // 2. Validar firma de la función escribir(x, y, tam, msg)
+            if (funcTok.value == "escribir") {
+                if (args.size() == 4) {
+                    bool p1Valido = (args[0].type == "NUMERO" || args[0].type == "VARNUM");
+                    bool p2Valido = (args[1].type == "NUMERO" || args[1].type == "VARNUM");
+                    bool p3Valido = (args[2].type == "NUMERO" || args[2].type == "VARNUM");
+                    bool p4Valido = (args[3].type == "LITERAL_TEXTO" || args[3].type == "VARTEXTO");
+
+                    if (!p1Valido || !p2Valido || !p3Valido || !p4Valido) {
+                        errors.push_back({funcTok.line, funcTok.column, "SEMANTICO", 
+                            "Incompatibilidad de parametros en escribir(): Requiere (VARNUM, VARNUM, VARNUM, VARTEXTO)"});
+                    }
+                }
+            }
+        }
+    }
+
+    std::string parseExpression() {
+        std::string primaryType = "DESCONOCIDO";
+        bool hayNumero = false;
+        bool hayTexto = false;
+        int lineErr = peek().line;
+        int colErr = peek().column;
+
+        while (cursor &lt; tokens.size()) {
+            Token t = peek();
+
+            if (t.value == "]" || t.value == ")" || t.value == "," || 
+                t.type == "PALABRA_RESERVADA" || t.value == "sino") {
+                break;
+            }
+
+            if (t.type == "LITERAL_TEXTO") {
+                hayTexto = true;
+                if (primaryType == "DESCONOCIDO") primaryType = "VARTEXTO";
+                advance();
+            } else if (t.type == "NUMERO") {
+                hayNumero = true;
+                if (primaryType == "DESCONOCIDO") primaryType = "VARNUM";
+                advance();
+            } else if (t.type == "ID") {
+                if (symbolTable.find(t.value) == symbolTable.end()) {
+                    errors.push_back({t.line, t.column, "SEMANTICO", "Variable no declarada: '" + t.value + "'"});
+                } else {
+                    std::string realType = symbolTable[t.value];
+                    if (realType == "VARNUM") hayNumero = true;
+                    if (realType == "VARTEXTO") hayTexto = true;
+                    if (primaryType == "DESCONOCIDO") primaryType = realType;
+                }
+                advance();
+            } else if (t.type == "FUNCION") {
+                parseFunctionCall();
+            } else {
+                advance();
+            }
+        }
+
+        // Operación aritmética incoherente entre número y cadena
+        if (hayNumero &amp;&amp; hayTexto) {
+            errors.push_back({lineErr, colErr, "SEMANTICO", "Operacion aritmetica incoherente entre un numero (VARNUM) y una cadena (VARTEXTO)"});
+        }
+
+        return primaryType;
+    }
+
+    void checkBalancing() {
+        int brackets = 0, parens = 0;
+        for (const auto&amp; tok : tokens) {
+            if (tok.value == "[") brackets++;
+            if (tok.value == "]") brackets--;
+            if (tok.value == "(") parens++;
+            if (tok.value == ")") parens--;
+        }
+        if (brackets != 0) errors.push_back({(int)tokens.size(), 1, "SINTACTICO", "Falta de cierre de bloque principal / Error de balanceo en corchetes '[' o ']'"});
+        if (parens != 0) errors.push_back({(int)tokens.size(), 1, "SINTACTICO", "Error de balanceo en parentesis '(' o ')'"});
+    }
+};
+
+// ==========================================
+// 4. FUNCIÓN PRINCIPAL
+// ==========================================
+
+int main() {
+    std::string codigoFuente = R"(
+@ Ejemplo 1: Control Basico del Sistema (~50 lineas)
+
+INICIO [
+    VARNUM anguloHome = 90
+    VARNUM garraAbierta = 0
+    VARNUM garraCerrada = 180
+    VARNUM frecuenciaTono = 880
+    BOOLEANOS estadoSensor = 0
+
+    @ Mensaje de arranque en OLED
+    Limpiar()
+    escribir(0, 0, 1, "Iniciando Test")
+
+    @ Calibrar brazo a posicion base
+    moverBase(anguloHome)
+    moverHombro(anguloHome)
+    moverCodo(anguloHome)
+    moverMuneca(anguloHome)
+    moverGarra(garraAbierta)
+
+    @ Indicar estado con LED verde
+    LED(0, 255, 0)
+    sonar(frecuenciaTono)
+    esperar(300)
+    sonar(0)
+
+    Limpiar()
+    escribir(0, 0, 1, "Sistema Listo")
+]
+
+BUCLE [
+    estadoSensor = LeerSensor()
+
+    si (estadoSensor == 1) [
+        LED(255, 0, 0)
+        Limpiar()
+        escribir(0, 0, 1, "Objeto Cerca")
+        
+        moverGarra(garraCerrada)
+        esperar(500)
+        moverGarra(garraAbierta)
+        esperar(500)
+        
+        LED(0, 255, 0)
+    ] sino [
+        Limpiar()
+        escribir(0, 0, 1, "Esperando...")
+        esperar(200)
+    ]
+]
+)";
+
+    std::cout &lt;&lt; "====================================================\n";
+    std::cout &lt;&lt; "        COMPILADOR IDE BRAZO ROBÓTICO (C++)         \n";
+    std::cout &lt;&lt; "====================================================\n\n";
+
+    std::vector&lt;DiagnosticError&gt; diagnosticos;
+
+    // 1. Análisis Léxico
+    Lexer lexer(codigoFuente, diagnosticos);
+    std::vector&lt;Token&gt; tokens = lexer.tokenize();
+
+    // 2. Análisis Sintáctico y Semántico
+    Compiler compiler(tokens, diagnosticos);
+    compiler.analyze();
+
+    std::cout &lt;&lt; "--- [ CONSOLA DE DIAGNÓSTICO ] ---\n";
+    if (diagnosticos.empty()) {
+        std::cout &lt;&lt; "[ÉXITO] Código compilado exitosamente.\n";
+    } else {
+        std::cout &lt;&lt; "[ERROR] Se encontraron " &lt;&lt; diagnosticos.size() &lt;&lt; " error(es) en el código:\n\n";
+        for (const auto&amp; err : diagnosticos) {
+            std::cout &lt;&lt; " -&gt; Linea " &lt;&lt; err.line &lt;&lt; ", Col " &lt;&lt; err.column 
+                      &lt;&lt; " [" &lt;&lt; err.category &lt;&lt; "]: " &lt;&lt; err.message &lt;&lt; "\n";
+        }
+    }
+    std::cout &lt;&lt; "====================================================\n";
+
+    return 0;
+}</code></pre>
                 </div>
 
-                <!-- CÓDIGO JAVASCRIPT -->
+                <!-- CÓDIGO JAVASCRIPT PROTOTIPO COMPLETO -->
                 <div id="js" class="tab-content">
-                    <pre><code>// ==========================================
-// PROTOTIPO EN JAVASCRIPT (ORIGINAL)
-// ==========================================
-class Lexer {
+                    <pre><code>// ============================================================================
+// PROTOTIPO COMPLETO EN JAVASCRIPT (MOTOR DE VALIDACIÓN FRONTEND)
+// ============================================================================
+
+const KEYWORDS = [
+    'INICIO', 'BUCLE', 'VARNUM', 'VARTEXTO', 'BOOLEANOS',
+    'si', 'sino', 'repetir'
+];
+
+const FUNCTIONS = [
+    'moverBase', 'moverHombro', 'moverCodo', 'moverMuneca', 'moverGarra',
+    'esperar', 'sonar', 'Limpiar', 'escribir', 'LED',
+    'LeerSensor', 'Adelante', 'Atras', 'Detener', 'EstadoMotor', 'velocidadBanda'
+];
+
+const OPERATORS = [
+    '==', '!=', '&lt;=', '&gt;=', '=', '&lt;', '&gt;', '+', '-', '*', '/', '!', '|', '&amp;'
+];
+
+const DELIMITERS = ['(', ')', '[', ']', ','];
+
+class LexerJS {
     constructor(source) {
         this.source = source;
-        this.cursor = 0;
+        this.tokens = [];
+        this.errors = [];
         this.line = 1;
         this.column = 1;
-        this.errors = [];
+        this.cursor = 0;
     }
 
     tokenize() {
-        const tokens = [];
-        const keywords = new Set(["INICIO", "BUCLE", "VARNUM", "VARTEXTO", "BOOLEANOS", "si", "sino", "repetir"]);
-        const robotFunctions = new Set(["moverBase", "moverHombro", "moverCodo", "moverGarra", "escribir", "sonar", "Detener"]);
+        while (this.cursor &lt; this.source.length) {
+            const char = this.source[this.cursor];
 
-        while (this.cursor < this.source.length) {
-            let current = this.source[this.cursor];
-
-            if (/\s/.test(current)) {
-                if (current === '\n') { this.line++; this.column = 1; }
-                else { this.column++; }
+            if (char === '\n') {
+                this.line++;
+                this.column = 1;
                 this.cursor++;
                 continue;
             }
 
-            if (current === '@') {
-                while (this.cursor < this.source.length && this.source[this.cursor] !== '\n') {
+            if (/\s/.test(char)) {
+                this.column++;
+                this.cursor++;
+                continue;
+            }
+
+            if (char === '@') {
+                while (this.cursor &lt; this.source.length &amp;&amp; this.source[this.cursor] !== '\n') {
                     this.cursor++;
                 }
                 continue;
             }
 
-            if (/[a-zA-Z_]/.test(current)) {
+            if (char === '"') {
                 let startCol = this.column;
-                let id = "";
-                while (this.cursor < this.source.length && /[a-zA-Z0-9_]/.test(this.source[this.cursor])) {
-                    id += this.source[this.cursor];
-                    this.cursor++; this.column++;
+                let str = '';
+                this.cursor++;
+                this.column++;
+
+                while (this.cursor &lt; this.source.length &amp;&amp; this.source[this.cursor] !== '"' &amp;&amp; this.source[this.cursor] !== '\n') {
+                    str += this.source[this.cursor];
+                    this.cursor++;
+                    this.column++;
                 }
-                let type = keywords.has(id) ? "PALABRA_RESERVADA" : (robotFunctions.has(id) ? "FUNCION" : "ID");
-                tokens.push({ type, value: id, line: this.line, column: startCol });
+
+                if (this.source[this.cursor] === '"') {
+                    this.cursor++;
+                    this.column++;
+                    this.tokens.push({ type: 'LITERAL_TEXTO', value: str, line: this.line, column: startCol });
+                } else {
+                    this.errors.push({ type: 'Léxico', msg: 'Cadena de texto sin cerrar con comillas', line: this.line, column: startCol });
+                }
                 continue;
             }
 
+            const twoCharOp = this.source.substring(this.cursor, this.cursor + 2);
+            if (['==', '!=', '&lt;=', '&gt;='].includes(twoCharOp)) {
+                this.tokens.push({ type: 'OPERADOR', value: twoCharOp, line: this.line, column: this.column });
+                this.cursor += 2;
+                this.column += 2;
+                continue;
+            }
+
+            if (OPERATORS.includes(char)) {
+                this.tokens.push({ type: 'OPERADOR', value: char, line: this.line, column: this.column });
+                this.cursor++;
+                this.column++;
+                continue;
+            }
+
+            if (DELIMITERS.includes(char)) {
+                this.tokens.push({ type: 'DELIMITADOR', value: char, line: this.line, column: this.column });
+                this.cursor++;
+                this.column++;
+                continue;
+            }
+
+            if (/[0-9]/.test(char)) {
+                let startCol = this.column;
+                let numStr = '';
+                while (this.cursor &lt; this.source.length &amp;&amp; /[0-9]/.test(this.source[this.cursor])) {
+                    numStr += this.source[this.cursor];
+                    this.cursor++;
+                    this.column++;
+                }
+                this.tokens.push({ type: 'LITERAL_NUMERO', value: parseInt(numStr, 10), line: this.line, column: startCol });
+                continue;
+            }
+
+            if (/[a-zA-Z_]/.test(char)) {
+                let startCol = this.column;
+                let id = '';
+                while (this.cursor &lt; this.source.length &amp;&amp; /[a-zA-Z0-9_]/.test(this.source[this.cursor])) {
+                    id += this.source[this.cursor];
+                    this.cursor++;
+                    this.column++;
+                }
+
+                if (KEYWORDS.includes(id)) {
+                    this.tokens.push({ type: 'PALABRA_RESERVADA', value: id, line: this.line, column: startCol });
+                } else if (FUNCTIONS.includes(id)) {
+                    this.tokens.push({ type: 'FUNCION', value: id, line: this.line, column: startCol });
+                } else {
+                    this.tokens.push({ type: 'ID', value: id, line: this.line, column: startCol });
+                }
+                continue;
+            }
+
+            this.errors.push({
+                type: 'Léxico',
+                msg: `Carácter no reconocido '${char}' en el alfabeto.`,
+                line: this.line,
+                column: this.column
+            });
             this.cursor++;
             this.column++;
         }
-        return tokens;
+
+        return { tokens: this.tokens, errors: this.errors };
+    }
+}
+
+class CompilerJS {
+    constructor(tokens) {
+        this.tokens = tokens;
+        this.cursor = 0;
+        this.errors = [];
+        this.symbolTable = {};
+    }
+
+    peek() {
+        return this.tokens[this.cursor] || null;
+    }
+
+    consume(expectedValue = null, expectedType = null) {
+        const token = this.peek();
+        if (!token) {
+            this.errors.push({ type: 'Sintáctico', msg: 'Fin inesperado del archivo (EOF)', line: 'Fin', column: 0 });
+            return null;
+        }
+
+        if (expectedValue &amp;&amp; token.value !== expectedValue) {
+            this.errors.push({
+                type: 'Sintáctico',
+                msg: `Se esperaba '${expectedValue}', pero se encontró '${token.value}'`,
+                line: token.line,
+                column: token.column
+            });
+            return null;
+        }
+
+        if (expectedType &amp;&amp; token.type !== expectedType) {
+            this.errors.push({
+                type: 'Sintáctico',
+                msg: `Se esperaba un tipo ${expectedType}, pero se encontró '${token.value}'`,
+                line: token.line,
+                column: token.column
+            });
+            return null;
+        }
+
+        this.cursor++;
+        return token;
+    }
+
+    compile() {
+        if (this.tokens.length === 0) return { errors: this.errors, symbolTable: this.symbolTable };
+
+        let hasInicio = false;
+        let hasBucle = false;
+
+        while (this.cursor &lt; this.tokens.length) {
+            const token = this.peek();
+
+            if (token.value === 'INICIO') {
+                hasInicio = true;
+                this.consume('INICIO');
+                this.consume('[', 'DELIMITADOR');
+                this.parseBlock();
+            } else if (token.value === 'BUCLE') {
+                hasBucle = true;
+                this.consume('BUCLE');
+                this.consume('[', 'DELIMITADOR');
+                this.parseBlock();
+            } else {
+                this.errors.push({
+                    type: 'Sintáctico',
+                    msg: `Instrucción fuera de bloques INICIO o BUCLE: '${token.value}'`,
+                    line: token.line,
+                    column: token.column
+                });
+                this.cursor++;
+            }
+        }
+
+        if (!hasInicio) this.errors.push({ type: 'Sintáctico', msg: 'Falta la estructura obligatoria INICIO [ ... ]', line: 1, column: 1 });
+        if (!hasBucle) this.errors.push({ type: 'Sintáctico', msg: 'Falta la estructura obligatoria BUCLE [ ... ]', line: 1, column: 1 });
+
+        return { errors: this.errors, symbolTable: this.symbolTable };
+    }
+
+    parseBlock() {
+        while (this.cursor &lt; this.tokens.length) {
+            const token = this.peek();
+            if (!token) break;
+
+            if (token.value === ']') {
+                this.consume(']');
+                return;
+            }
+
+            this.parseStatement();
+        }
+    }
+
+    parseStatement() {
+        const token = this.peek();
+        if (!token) return;
+
+        if (['VARNUM', 'VARTEXTO', 'BOOLEANOS'].includes(token.value)) {
+            this.parseDeclaration();
+            return;
+        }
+
+        if (token.value === 'si') {
+            this.parseSi();
+            return;
+        }
+
+        if (token.value === 'repetir') {
+            this.parseRepetir();
+            return;
+        }
+
+        if (token.type === 'FUNCION') {
+            this.parseFunctionCall();
+            return;
+        }
+
+        if (token.type === 'ID') {
+            this.parseAssignment();
+            return;
+        }
+
+        this.errors.push({
+            type: 'Sintáctico',
+            msg: `Sentencia no reconocida: '${token.value}'`,
+            line: token.line,
+            column: token.column
+        });
+        this.cursor++;
+    }
+
+    parseDeclaration() {
+        const typeToken = this.consume();
+        const idToken = this.consume(null, 'ID');
+
+        if (!idToken) return;
+
+        if (this.symbolTable[idToken.value]) {
+            this.errors.push({
+                type: 'Semántico',
+                msg: `La variable '${idToken.value}' ya ha sido declarada.`,
+                line: idToken.line,
+                column: idToken.column
+            });
+        }
+
+        let initValue = null;
+
+        if (this.peek() &amp;&amp; this.peek().value === '=') {
+            this.consume('=');
+            const exprRes = this.parseExpression();
+            initValue = exprRes ? exprRes.value : null;
+
+            if (exprRes) {
+                this.validateTypeCompatibility(typeToken.value, exprRes.type, idToken.line, idToken.column);
+            }
+        }
+
+        this.symbolTable[idToken.value] = {
+            type: typeToken.value,
+            value: initValue !== null ? initValue : 'sin asignar',
+            line: idToken.line
+        };
+    }
+
+    parseAssignment() {
+        const idToken = this.consume(null, 'ID');
+        if (!idToken) return;
+
+        if (!this.symbolTable[idToken.value]) {
+            this.errors.push({
+                type: 'Semántico',
+                msg: `La variable '${idToken.value}' no ha sido declarada.`,
+                line: idToken.line,
+                column: idToken.column
+            });
+        }
+
+        this.consume('=', 'OPERADOR');
+        const exprRes = this.parseExpression();
+
+        if (exprRes &amp;&amp; this.symbolTable[idToken.value]) {
+            const varType = this.symbolTable[idToken.value].type;
+            this.validateTypeCompatibility(varType, exprRes.type, idToken.line, idToken.column);
+            this.symbolTable[idToken.value].value = exprRes.value !== undefined ? exprRes.value : 'expresión';
+        }
+    }
+
+    parseSi() {
+        this.consume('si');
+        this.consume('(', 'DELIMITADOR');
+        const condRes = this.parseExpression();
+        this.consume(')', 'DELIMITADOR');
+
+        if (condRes &amp;&amp; condRes.type !== 'BOOLEANOS' &amp;&amp; condRes.type !== 'RELACIONAL') {
+            this.errors.push({
+                type: 'Semántico',
+                msg: `La condición del 'si' debe evaluarse como Booleana.`,
+                line: condRes.line,
+                column: condRes.column
+            });
+        }
+
+        this.consume('[', 'DELIMITADOR');
+        this.parseBlock();
+
+        if (this.peek() &amp;&amp; this.peek().value === 'sino') {
+            this.consume('sino');
+            this.consume('[', 'DELIMITADOR');
+            this.parseBlock();
+        }
+    }
+
+    parseRepetir() {
+        this.consume('repetir');
+        this.consume('(', 'DELIMITADOR');
+        const condRes = this.parseExpression();
+        this.consume(')', 'DELIMITADOR');
+
+        if (condRes &amp;&amp; condRes.type !== 'BOOLEANOS' &amp;&amp; condRes.type !== 'RELACIONAL') {
+            this.errors.push({
+                type: 'Semántico',
+                msg: `La condición del bucle 'repetir' debe ser de tipo Booleano.`,
+                line: condRes.line,
+                column: condRes.column
+            });
+        }
+
+        this.consume('[', 'DELIMITADOR');
+        this.parseBlock();
+    }
+
+    parseFunctionCall() {
+        const funcToken = this.consume(null, 'FUNCION');
+        if (!funcToken) return;
+
+        this.consume('(', 'DELIMITADOR');
+        const args = [];
+
+        while (this.peek() &amp;&amp; this.peek().value !== ')') {
+            const argExpr = this.parseExpression();
+            if (argExpr) args.push(argExpr);
+
+            if (this.peek() &amp;&amp; this.peek().value === ',') {
+                this.consume(',');
+            } else {
+                break;
+            }
+        }
+
+        this.consume(')', 'DELIMITADOR');
+        this.validateFunctionSemantics(funcToken, args);
+    }
+
+    validateFunctionSemantics(funcToken, args) {
+        const fnName = funcToken.value;
+        const servoFunctions = ['moverBase', 'moverHombro', 'moverCodo', 'moverMuneca', 'moverGarra'];
+
+        if (servoFunctions.includes(fnName)) {
+            if (args.length !== 1) {
+                this.errors.push({
+                    type: 'Semántico',
+                    msg: `La función '${fnName}' requiere exactamente 1 argumento.`,
+                    line: funcToken.line,
+                    column: funcToken.column
+                });
+                return;
+            }
+
+            const arg = args[0];
+            if (arg.type !== 'VARNUM') {
+                this.errors.push({
+                    type: 'Semántico',
+                    msg: `El argumento de '${fnName}' debe ser numérico (VARNUM).`,
+                    line: funcToken.line,
+                    column: funcToken.column
+                });
+            } else if (typeof arg.value === 'number') {
+                if (arg.value &lt; 0 || arg.value &gt; 180) {
+                    this.errors.push({
+                        type: 'Semántico',
+                        msg: `Ángulo fuera de rango en '${fnName}(${arg.value})'. Permitido: 0° a 180°.`,
+                        line: funcToken.line,
+                        column: funcToken.column
+                    });
+                }
+            }
+        }
+
+        if (fnName === 'LED') {
+            if (args.length !== 3) {
+                this.errors.push({
+                    type: 'Semántico',
+                    msg: `La función 'LED' requiere 3 parámetros: LED(R, G, B).`,
+                    line: funcToken.line,
+                    column: funcToken.column
+                });
+                return;
+            }
+
+            args.forEach((arg, index) => {
+                const channels = ['R (Rojo)', 'G (Verde)', 'B (Azul)'];
+                if (arg.type !== 'VARNUM') {
+                    this.errors.push({
+                        type: 'Semántico',
+                        msg: `El canal ${channels[index]} de LED debe ser numérico.`,
+                        line: funcToken.line,
+                        column: funcToken.column
+                    });
+                } else if (typeof arg.value === 'number' &amp;&amp; (arg.value &lt; 0 || arg.value &gt; 255)) {
+                    this.errors.push({
+                        type: 'Semántico',
+                        msg: `Valor cromático fuera de rango en LED canal ${channels[index]}: '${arg.value}'. Rango [0 - 255].`,
+                        line: funcToken.line,
+                        column: funcToken.column
+                    });
+                }
+            });
+        }
+    }
+
+    parseExpression() {
+        const token = this.peek();
+        if (!token) return null;
+
+        let left = null;
+
+        if (token.type === 'LITERAL_NUMERO') {
+            this.consume();
+            left = { type: 'VARNUM', value: token.value, line: token.line, column: token.column };
+        } else if (token.type === 'LITERAL_TEXTO') {
+            this.consume();
+            left = { type: 'VARTEXTO', value: token.value, line: token.line, column: token.column };
+        } else if (token.type === 'ID') {
+            this.consume();
+            const varInfo = this.symbolTable[token.value];
+            if (!varInfo) {
+                this.errors.push({
+                    type: 'Semántico',
+                    msg: `Variable no declarada '${token.value}' en la expresión.`,
+                    line: token.line,
+                    column: token.column
+                });
+                left = { type: 'UNKNOWN', value: undefined, line: token.line, column: token.column };
+            } else {
+                left = { type: varInfo.type, value: varInfo.value, line: token.line, column: token.column };
+            }
+        } else if (token.type === 'FUNCION') {
+            const fnName = token.value;
+            this.parseFunctionCall();
+            let returnType = 'VARNUM';
+            if (fnName === 'LeerSensor' || fnName === 'EstadoMotor') returnType = 'BOOLEANOS';
+            left = { type: returnType, value: 'retorno_func', line: token.line, column: token.column };
+        }
+
+        const nextToken = this.peek();
+        if (nextToken &amp;&amp; nextToken.type === 'OPERADOR') {
+            const opToken = this.consume();
+            this.parseExpression();
+
+            if (['==', '!=', '&lt;', '&gt;', '&lt;=', '&gt;='].includes(opToken.value)) {
+                return { type: 'RELACIONAL', value: 'boolean_res', line: opToken.line, column: opToken.column };
+            }
+
+            return { type: left ? left.type : 'VARNUM', value: 'calc_res', line: opToken.line, column: opToken.column };
+        }
+
+        return left;
+    }
+
+    validateTypeCompatibility(expectedType, actualType, line, col) {
+        if (actualType === 'UNKNOWN') return;
+
+        if (expectedType === 'BOOLEANOS' &amp;&amp; actualType === 'VARNUM') return;
+        if (expectedType === 'VARNUM' &amp;&amp; actualType === 'BOOLEANOS') return;
+        if (expectedType === 'RELACIONAL' &amp;&amp; expectedType === 'BOOLEANOS') return;
+
+        if (expectedType !== actualType &amp;&amp; actualType !== 'RELACIONAL') {
+            this.errors.push({
+                type: 'Semántico',
+                msg: `Incompatibilidad de tipos: Se esperaba '${expectedType}' pero se obtuvo '${actualType}'.`,
+                line: line,
+                column: col
+            });
+        }
     }
 }</code></pre>
                 </div>
@@ -518,16 +1477,13 @@ class Lexer {
     <!-- SCRIPT INTERACTIVO -->
     <script>
         function switchTab(tabId) {
-            // Desactivar botones y contenidos
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-            // Activar seleccionados
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
 
-        // Navegación suave
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
